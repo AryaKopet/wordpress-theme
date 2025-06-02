@@ -24,30 +24,6 @@ $hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
     </div>
 </section>
 
-
-<!-- Berita Terbaru -->
-<section class="container py-5">
-    <h2 class="text-center mb-4">Berita Gereja</h2>
-    <div class="row">
-        <?php
-        $recent_posts = new WP_Query(['posts_per_page' => 3]);
-        if ($recent_posts->have_posts()) :
-            while ($recent_posts->have_posts()) : $recent_posts->the_post(); ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php the_title(); ?></h5>
-                            <p class="card-text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
-                            <a href="<?php the_permalink(); ?>" class="btn btn-primary">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-        <?php endwhile;
-            wp_reset_postdata();
-        endif; ?>
-    </div>
-</section>
-
 <!-- Info 3 Kolom -->
 <section class="bg-light py-5">
     <div class="container">
@@ -68,6 +44,36 @@ $hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
                 <p>Dapatkan dukungan doa dan konseling dari tim gereja kami.</p>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Berita Terbaru -->
+<section class="container py-5">
+    <h2 class="text-center mb-4">Berita Gereja</h2>
+    <div class="row">
+        <?php
+        $recent_posts = new WP_Query(['posts_per_page' => 3]);
+        if ($recent_posts->have_posts()) :
+            while ($recent_posts->have_posts()) : $recent_posts->the_post(); ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm post-card transition">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <img src="<?php the_post_thumbnail_url('medium'); ?>" class="card-img-top" alt="<?php the_title(); ?>">
+                        <?php else : ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero.jpg" class="card-img-top" alt="Default Image">
+                        <?php endif; ?>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"><?php the_title(); ?></h5>
+                            <p class="card-text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
+                            <div class="mt-auto">
+                                <a href="<?php the_permalink(); ?>" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <?php endwhile;
+            wp_reset_postdata();
+        endif; ?>
     </div>
 </section>
 

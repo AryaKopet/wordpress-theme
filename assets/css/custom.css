@@ -23,3 +23,45 @@
   background-color: #0d6efd;
   color: #ffffff !important;
 }
+
+/* Transisi lembut untuk card */
+.post-card {
+  transition: all 0.3s ease;
+}
+
+/* Efek hover: naik sedikit + bayangan lembut */
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card post styling */
+.post-card {
+  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Hover animasi tipis */
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Gambar atas rounded */
+.card-img-top {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  object-fit: cover;
+  height: 200px;
+}
+
+/* Tombol */
+.btn-outline-primary {
+  transition: all 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
