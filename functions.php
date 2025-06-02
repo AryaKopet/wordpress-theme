@@ -106,3 +106,53 @@ function gereja_customize_hero($wp_customize)
     ]));
 }
 add_action('customize_register', 'gereja_customize_hero');
+function gereja_theme_setup()
+{
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails'); // << tambahkan ini
+    add_theme_support('custom-logo');
+}
+add_action('after_setup_theme', 'gereja_theme_setup');
+
+function gereja_customize_footer($wp_customize)
+{
+    // Section Footer Sosmed
+    $wp_customize->add_section('footer_social_section', [
+        'title' => __('Footer Sosial Media', 'gereja-tema'),
+        'priority' => 40,
+    ]);
+
+    // Facebook URL
+    $wp_customize->add_setting('footer_facebook_link', [
+        'default' => 'https://facebook.com/gerejakami',
+        'sanitize_callback' => 'esc_url_raw',
+    ]);
+    $wp_customize->add_control('footer_facebook_link', [
+        'label' => __('Link Facebook', 'gereja-tema'),
+        'section' => 'footer_social_section',
+        'type' => 'url',
+    ]);
+
+    // Instagram URL
+    $wp_customize->add_setting('footer_instagram_link', [
+        'default' => 'https://instagram.com/gerejakami',
+        'sanitize_callback' => 'esc_url_raw',
+    ]);
+    $wp_customize->add_control('footer_instagram_link', [
+        'label' => __('Link Instagram', 'gereja-tema'),
+        'section' => 'footer_social_section',
+        'type' => 'url',
+    ]);
+
+    // Email
+    $wp_customize->add_setting('footer_email', [
+        'default' => 'info@gerejakami.org',
+        'sanitize_callback' => 'sanitize_email',
+    ]);
+    $wp_customize->add_control('footer_email', [
+        'label' => __('Alamat Email', 'gereja-tema'),
+        'section' => 'footer_social_section',
+        'type' => 'email',
+    ]);
+}
+add_action('customize_register', 'gereja_customize_footer');
