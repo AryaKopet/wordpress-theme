@@ -11,21 +11,24 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- NAVBAR MODERN -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+            <a class="navbar-brand fw-bold text-primary" href="<?php echo home_url(); ?>">
+                <?php bloginfo('name'); ?>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <?php
-                wp_nav_menu([
-                    'theme_location' => 'primary',
-                    'menu_class'     => 'navbar-nav ms-auto',
-                    'container'      => false,
-                    'fallback_cb'    => 'wp_page_menu', // fallback agar menu tetap muncul
-                ]);
-                ?>
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                <ul class="navbar-nav d-flex align-items-center gap-2">
+                    <?php
+                    wp_list_pages([
+                        'title_li' => '', // Menghilangkan tulisan "Pages"
+                        'exclude'  => '', // Kalau mau kecualikan halaman tertentu
+                    ]);
+                    ?>
+                </ul>
             </div>
         </div>
     </nav>
