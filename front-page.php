@@ -1,13 +1,29 @@
 <?php get_header(); ?>
 
 <!-- Hero Section -->
-<section class="hero text-white text-center py-5" style="background: url('<?php echo get_template_directory_uri(); ?>/assets/img/hero.jpg') center/cover no-repeat; min-height: 400px;">
+<?php
+$hero_bg = get_theme_mod('hero_bg_image');
+$hero_title = get_theme_mod('hero_title', 'Selamat Datang di Gereja Kami');
+$hero_sub = get_theme_mod('hero_subtitle', 'Menjadi Terang di Dunia, Menyebarkan Kasih');
+$hero_button_text = get_theme_mod('hero_button_text', 'Lihat Jadwal Ibadah');
+
+// Didefinisikan dulu SEBELUM dipakai
+$hero_page_id = get_theme_mod('hero_button_link');
+$hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
+?>
+
+
+<section class="hero text-white text-center py-5"
+    style="background: url('<?php echo esc_url($hero_bg); ?>') center/cover no-repeat; min-height: 400px;">
     <div class="container">
-        <h1 class="display-4 fw-bold">Selamat Datang di Gereja Kami</h1>
-        <p class="lead">Menjadi Terang di Dunia, Menyebarkan Kasih</p>
-        <a href="/jadwal-pelayanan" class="btn btn-outline-light btn-lg mt-3">Lihat Jadwal Ibadah</a>
+        <h1 class="display-4 fw-bold"><?php echo esc_html($hero_title); ?></h1>
+        <p class="lead"><?php echo esc_html($hero_sub); ?></p>
+        <a href="<?php echo esc_url($hero_link); ?>" class="btn btn-outline-light btn-lg mt-3">
+            <?php echo esc_html($hero_button_text); ?>
+        </a>
     </div>
 </section>
+
 
 <!-- Berita Terbaru -->
 <section class="container py-5">
