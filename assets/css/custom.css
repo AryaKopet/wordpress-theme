@@ -1,0 +1,25 @@
+/* Hapus garis bawah dan set warna awal */
+.navbar-nav li a {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  color: #212529; /* abu gelap */
+  text-decoration: none !important; /* hapus underline */
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Hover dan fokus */
+.navbar-nav li a:hover,
+.navbar-nav li a:focus {
+  background-color: #0d6efd;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+/* Halaman aktif */
+.navbar-nav li.current_page_item a,
+.navbar-nav li.current-menu-item a {
+  background-color: #0d6efd;
+  color: #ffffff !important;
+}
