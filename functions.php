@@ -212,14 +212,14 @@ function gereja_customize_cta($wp_customize)
     ]);
 
     // Link tombol
+    // Link Tombol (dropdown halaman)
     $wp_customize->add_setting('cta_button_link', [
-        'default' => '/hubungi-kami',
-        'sanitize_callback' => 'esc_url_raw',
+        'sanitize_callback' => 'absint',
     ]);
     $wp_customize->add_control('cta_button_link', [
-        'label'   => __('Link Tombol CTA', 'gereja-tema'),
+        'label'   => __('Pilih Halaman untuk Tombol CTA', 'gereja-tema'),
         'section' => 'cta_section',
-        'type'    => 'url',
+        'type'    => 'dropdown-pages',
     ]);
 }
 add_action('customize_register', 'gereja_customize_cta');

@@ -82,7 +82,8 @@ $hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
 $cta_title       = get_theme_mod('cta_title', 'Mari Bergabung dalam Keluarga Gereja Kami');
 $cta_subtitle    = get_theme_mod('cta_subtitle', 'Kami menyambut Anda dengan tangan terbuka dalam kasih Tuhan.');
 $cta_btn_text    = get_theme_mod('cta_button_text', 'Hubungi Kami');
-$cta_btn_link    = get_theme_mod('cta_button_link', '/hubungi-kami');
+$cta_page_id = get_theme_mod('cta_button_link');
+$cta_btn_link = $cta_page_id ? get_permalink($cta_page_id) : '#';
 ?>
 
 <section class="bg-primary text-white text-center py-5 cta-section">
