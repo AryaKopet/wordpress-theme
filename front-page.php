@@ -67,13 +67,11 @@ $hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
                             <?php
                             $categories = get_the_category();
                             if (!empty($categories)) :
+                                foreach ($categories as $cat) {
+                                    echo '<span class="badge-kategori me-1">' . esc_html($cat->name) . '</span>';
+                                }
+                            endif;
                             ?>
-                                <p class="text-primary small mb-1">
-                                    <?php foreach ($categories as $cat) :
-                                        echo '<span class="me-1">#' . esc_html($cat->name) . '</span>';
-                                    endforeach; ?>
-                                </p>
-                            <?php endif; ?>
                             <h5 class="card-title"><?php the_title(); ?></h5>
                             <p class="card-text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                             <div class="mt-auto">
