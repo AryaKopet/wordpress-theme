@@ -17,7 +17,11 @@ function gereja_register_menu()
         'primary' => __('Menu Utama', 'gereja-tema')
     ]);
 }
-add_action('after_setup_theme', 'gereja_register_menu');
+add_action('after_setup_theme', function () {
+    register_nav_menus([
+        'primary' => __('Menu Utama', 'gereja-tema')
+    ]);
+});
 
 function gereja_customize_hero($wp_customize)
 {
@@ -156,3 +160,13 @@ function gereja_customize_footer($wp_customize)
     ]);
 }
 add_action('customize_register', 'gereja_customize_footer');
+
+function add_home_link_to_menu($items, $args)
+{
+    if ($args->theme_location == 'primary') {
+        $home_link = '<li class="menu-item"><a href="' . esc_url(home_url()) . '">Home</a></li>';
+        $items = $home_link . $items;
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_home_link_to_menu', 10, 2);
