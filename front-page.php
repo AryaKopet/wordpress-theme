@@ -49,7 +49,7 @@ $hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
 
 <!-- Berita Terbaru -->
 <section class="container py-5">
-    <h2 class="text-center mb-4">Berita Gereja</h2>
+    <h2 class="text-center mb-4">Berita Terkini</h2>
     <div class="row">
         <?php
         $recent_posts = new WP_Query(['posts_per_page' => 3]);
@@ -63,6 +63,17 @@ $hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero.jpg" class="card-img-top" alt="Default Image">
                         <?php endif; ?>
                         <div class="card-body d-flex flex-column">
+                            <p class="text-muted small mb-1"><?php echo get_the_date(); ?></p>
+                            <?php
+                            $categories = get_the_category();
+                            if (!empty($categories)) :
+                            ?>
+                                <p class="text-primary small mb-1">
+                                    <?php foreach ($categories as $cat) :
+                                        echo '<span class="me-1">#' . esc_html($cat->name) . '</span>';
+                                    endforeach; ?>
+                                </p>
+                            <?php endif; ?>
                             <h5 class="card-title"><?php the_title(); ?></h5>
                             <p class="card-text"><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
                             <div class="mt-auto">
