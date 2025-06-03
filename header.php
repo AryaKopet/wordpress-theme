@@ -19,22 +19,26 @@
             $navbar_logo = get_theme_mod('navbar_logo_image');
             ?>
 
-            <a class="navbar-brand fw-bold text-primary" href="<?php echo home_url(); ?>">
+            <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="<?php echo home_url(); ?>">
                 <?php if ($navbar_type === 'logo' && $navbar_logo) : ?>
-                    <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" style="height: 40px;">
+                    <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" style="height: 60px; max-height: 60px;">
                 <?php else : ?>
                     <?php bloginfo('name'); ?>
                 <?php endif; ?>
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="mainNav">
                 <ul class="navbar-nav d-flex align-items-center gap-2">
                     <?php
-                    wp_list_pages([
-                        'title_li' => '', // Menghilangkan tulisan "Pages"
-                        'exclude'  => '', // Kalau mau kecualikan halaman tertentu
+                    wp_nav_menu([
+                        'theme_location' => 'primary',
+                        'menu_class'     => 'navbar-nav ms-auto mb-2 mb-lg-0',
+                        'container'      => false,
+                        'depth'          => 2,
+                        'fallback_cb'    => false,
                     ]);
                     ?>
                 </ul>
