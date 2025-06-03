@@ -170,3 +170,56 @@ function add_home_link_to_menu($items, $args)
     return $items;
 }
 add_filter('wp_nav_menu_items', 'add_home_link_to_menu', 10, 2);
+
+function gereja_customize_cta($wp_customize)
+{
+    $wp_customize->add_section('cta_section', [
+        'title'    => __('CTA Section (Front Page)', 'gereja-tema'),
+        'priority' => 50,
+    ]);
+
+    // Judul
+    $wp_customize->add_setting('cta_title', [
+        'default' => 'Mari Bergabung dalam Keluarga Gereja Kami',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+    $wp_customize->add_control('cta_title', [
+        'label'   => __('Judul CTA', 'gereja-tema'),
+        'section' => 'cta_section',
+        'type'    => 'text',
+    ]);
+
+    // Subjudul
+    $wp_customize->add_setting('cta_subtitle', [
+        'default' => 'Kami menyambut Anda dengan tangan terbuka dalam kasih Tuhan.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+    $wp_customize->add_control('cta_subtitle', [
+        'label'   => __('Subjudul CTA', 'gereja-tema'),
+        'section' => 'cta_section',
+        'type'    => 'text',
+    ]);
+
+    // Teks tombol
+    $wp_customize->add_setting('cta_button_text', [
+        'default' => 'Hubungi Kami',
+        'sanitize_callback' => 'sanitize_text_field',
+    ]);
+    $wp_customize->add_control('cta_button_text', [
+        'label'   => __('Teks Tombol CTA', 'gereja-tema'),
+        'section' => 'cta_section',
+        'type'    => 'text',
+    ]);
+
+    // Link tombol
+    $wp_customize->add_setting('cta_button_link', [
+        'default' => '/hubungi-kami',
+        'sanitize_callback' => 'esc_url_raw',
+    ]);
+    $wp_customize->add_control('cta_button_link', [
+        'label'   => __('Link Tombol CTA', 'gereja-tema'),
+        'section' => 'cta_section',
+        'type'    => 'url',
+    ]);
+}
+add_action('customize_register', 'gereja_customize_cta');
