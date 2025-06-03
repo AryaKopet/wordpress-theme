@@ -78,11 +78,11 @@ $hero_link = $hero_page_id ? get_permalink($hero_page_id) : '#';
 </section>
 
 <!-- CTA Section -->
-<section class="bg-primary text-white text-center py-5">
+<section class="bg-primary text-white text-center py-5 cta-section">
     <div class="container">
-        <h2 class="mb-3">Mari Bergabung dalam Keluarga Gereja Kami</h2>
-        <p>Kami membuka tangan untuk semua umat. Anda diterima di sini.</p>
-        <a href="/hubungi-kami" class="btn btn-light btn-lg mt-2">Hubungi Kami</a>
+        <h2 class="mb-3 display-5 fw-semibold">Mari Bergabung dalam Keluarga Gereja Kami</h2>
+        <p class="lead mb-4">Kami menyambut Anda dengan tangan terbuka dalam kasih Tuhan.</p>
+        <a href="/hubungi-kami" class="btn btn-cta btn-lg px-4 py-2">Hubungi Kami</a>
     </div>
 </section>
 

@@ -65,3 +65,77 @@
   background-color: #0d6efd;
   color: white;
 }
+
+/* Dropdown styling (jika menggunakan dropdown) */
+.navbar-nav .menu-item-has-children {
+  position: relative;
+}
+
+.navbar-nav .sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  min-width: 180px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.navbar-nav .sub-menu li {
+  list-style: none;
+}
+
+/* Jarak horizontal antar menu navbar */
+.navbar-nav > li {
+  margin: 0 0.5rem; /* bisa ditambah jadi 1rem kalau mau lebih longgar */
+}
+
+.navbar-nav .nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navbar-nav .sub-menu li a {
+  padding: 0.75rem 1rem;
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+
+.navbar-nav .sub-menu li a:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+}
+
+/* Show submenu on hover */
+.navbar-nav .menu-item-has-children:hover .sub-menu {
+  display: block;
+}
+
+/* CTA Section Styling */
+.cta-section {
+  background: linear-gradient(135deg, #0d6efd, #2563eb);
+  position: relative;
+  z-index: 1;
+}
+
+/* Button CTA */
+.btn-cta {
+  background-color: #ffffff;
+  color: #0d6efd;
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cta:hover {
+  background-color: #f1f1f1;
+  color: #0a58ca;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
