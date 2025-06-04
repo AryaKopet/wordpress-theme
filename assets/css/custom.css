@@ -233,3 +233,13 @@ input[type="text"], select.form-select {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.table thead th {
+  background-color: #034c95;
+  color: #fff;
+  font-weight: 600;
+}

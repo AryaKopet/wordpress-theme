@@ -17,17 +17,15 @@ $jadwal = json_decode($jadwal_json, true);
         </div>
     </section>
 <?php endif; ?>
-
-<!-- Tabel Jadwal -->
 <section class="container py-5">
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped text-center align-middle">
-            <thead class="table-primary">
+    <div class="table-responsive shadow rounded-3 overflow-hidden">
+        <table class="table table-bordered table-hover text-center align-middle mb-0">
+            <thead class="table-dark">
                 <tr>
-                    <th>Hari</th>
-                    <th>Waktu</th>
-                    <th>Tempat</th>
-                    <th>Keterangan</th>
+                    <th scope="col">Hari</th>
+                    <th scope="col">Waktu</th>
+                    <th scope="col">Tempat</th>
+                    <th scope="col">Keterangan</th>
                 </tr>
             </thead>
             <tbody>
