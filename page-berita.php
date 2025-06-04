@@ -59,7 +59,7 @@
                             ?>
                                 <p class="text-primary small mb-1">
                                     <?php foreach ($categories as $cat) :
-                                        echo '<span class="me-1">#' . esc_html($cat->name) . '</span>';
+                                        echo '<span class="badge-kategori me-1">' . esc_html($cat->name) . '</span>';
                                     endforeach; ?>
                                 </p>
                             <?php endif; ?>
