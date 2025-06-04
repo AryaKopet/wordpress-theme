@@ -253,12 +253,11 @@ function gereja_customizer_jadwal($wp_customize)
     ]);
 
     // Jadwal Ibadah (format JSON manual)
-    $wp_customize->add_setting('jadwal_ibadah');
-    $wp_customize->add_control('jadwal_ibadah', [
-        'label' => __('Jadwal Ibadah (format JSON)', 'gereja-tema'),
+    $wp_customize->add_setting('jadwal_catatan');
+    $wp_customize->add_control('jadwal_catatan', [
+        'label' => __('Catatan Tambahan (di bawah tabel)', 'gereja-tema'),
         'section' => 'jadwal_section',
         'type' => 'textarea',
-        'description' => 'Contoh: [{"hari":"Minggu","waktu":"07.00 WIB","tempat":"Gereja Induk","keterangan":"Ibadah Umum"}]',
     ]);
 }
 add_action('customize_register', 'gereja_customizer_jadwal');
