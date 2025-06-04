@@ -1,11 +1,27 @@
 <?php /* Template Name: Jadwal Ibadah */ ?>
 <?php get_header(); ?>
 
-<section class="container py-5">
-    <h1 class="mb-4 text-center">Jadwal Ibadah</h1>
+<?php
+$hero = get_theme_mod('jadwal_hero_image');
+$alamat = get_theme_mod('jadwal_alamat');
+$jadwal_json = get_theme_mod('jadwal_ibadah');
+$jadwal = json_decode($jadwal_json, true);
+?>
 
+<!-- Hero Section -->
+<?php if ($hero): ?>
+    <section class="text-white text-center py-5" style="background: url('<?php echo esc_url($hero); ?>') center/cover no-repeat;">
+        <div class="bg-dark bg-opacity-50 py-5">
+            <h1 class="display-5 fw-bold">Jadwal Ibadah</h1>
+            <p class="lead"><?php echo esc_html($alamat); ?></p>
+        </div>
+    </section>
+<?php endif; ?>
+
+<!-- Tabel Jadwal -->
+<section class="container py-5">
     <div class="table-responsive">
-        <table class="table table-bordered table-striped align-middle text-center">
+        <table class="table table-bordered table-striped text-center align-middle">
             <thead class="table-primary">
                 <tr>
                     <th>Hari</th>
@@ -15,25 +31,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Minggu</td>
-                    <td>07.00 WIB</td>
-                    <td>Gereja Induk</td>
-                    <td>Ibadah Umum</td>
-                </tr>
-                <tr>
-                    <td>Rabu</td>
-                    <td>18.30 WIB</td>
-                    <td>Aula Gereja</td>
-                    <td>Ibadah Doa</td>
-                </tr>
-                <tr>
-                    <td>Sabtu</td>
-                    <td>16.00 WIB</td>
-                    <td>Gereja Anak</td>
-                    <td>Ibadah Pemuda</td>
-                </tr>
-                <!-- Tambahkan baris sesuai kebutuhan -->
+                <?php if (!empty($jadwal)) :
+                    foreach ($jadwal as $row) : ?>
+                        <tr>
+                            <td><?php echo esc_html($row['hari']); ?></td>
+                            <td><?php echo esc_html($row['waktu']); ?></td>
+                            <td><?php echo esc_html($row['tempat']); ?></td>
+                            <td><?php echo esc_html($row['keterangan']); ?></td>
+                        </tr>
+                    <?php endforeach;
+                else : ?>
+                    <tr>
+                        <td colspan="4">Belum ada jadwal ibadah ditambahkan.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

@@ -23,6 +23,7 @@ add_action('after_setup_theme', function () {
     ]);
 });
 
+// Fungsi untuk modifikasi tampilan hero
 function gereja_customize_hero($wp_customize)
 {
     // Section Hero
@@ -110,6 +111,8 @@ function gereja_customize_hero($wp_customize)
     ]));
 }
 add_action('customize_register', 'gereja_customize_hero');
+
+// Fungsi untuk konfigurasi theme
 function gereja_theme_setup()
 {
     add_theme_support('title-tag');
@@ -118,6 +121,7 @@ function gereja_theme_setup()
 }
 add_action('after_setup_theme', 'gereja_theme_setup');
 
+// Fungsi untuk modifikasi tampilan footer
 function gereja_customize_footer($wp_customize)
 {
     // Section Footer Sosmed
@@ -171,6 +175,7 @@ function add_home_link_to_menu($items, $args)
 }
 add_filter('wp_nav_menu_items', 'add_home_link_to_menu', 10, 2);
 
+//fungsi untuk modifikasi tampilan cta
 function gereja_customize_cta($wp_customize)
 {
     $wp_customize->add_section('cta_section', [
@@ -211,7 +216,6 @@ function gereja_customize_cta($wp_customize)
         'type'    => 'text',
     ]);
 
-    // Link tombol
     // Link Tombol (dropdown halaman)
     $wp_customize->add_setting('cta_button_link', [
         'sanitize_callback' => 'absint',
@@ -223,3 +227,38 @@ function gereja_customize_cta($wp_customize)
     ]);
 }
 add_action('customize_register', 'gereja_customize_cta');
+
+// fungsi untuk modifikasi tampilan jadwal
+function gereja_customizer_jadwal($wp_customize)
+{
+    $wp_customize->add_section('jadwal_section', [
+        'title' => __('Halaman Jadwal Ibadah', 'gereja-tema'),
+        'priority' => 60,
+    ]);
+
+    // Gambar Hero
+    $wp_customize->add_setting('jadwal_hero_image');
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'jadwal_hero_image', [
+        'label' => __('Gambar Hero (Gereja)', 'gereja-tema'),
+        'section' => 'jadwal_section',
+        'settings' => 'jadwal_hero_image',
+    ]));
+
+    // Alamat Gereja
+    $wp_customize->add_setting('jadwal_alamat', ['default' => 'Jl. Damai No. 1, Kota Bahagia']);
+    $wp_customize->add_control('jadwal_alamat', [
+        'label' => __('Alamat Gereja', 'gereja-tema'),
+        'section' => 'jadwal_section',
+        'type' => 'text',
+    ]);
+
+    // Jadwal Ibadah (format JSON manual)
+    $wp_customize->add_setting('jadwal_ibadah');
+    $wp_customize->add_control('jadwal_ibadah', [
+        'label' => __('Jadwal Ibadah (format JSON)', 'gereja-tema'),
+        'section' => 'jadwal_section',
+        'type' => 'textarea',
+        'description' => 'Contoh: [{"hari":"Minggu","waktu":"07.00 WIB","tempat":"Gereja Induk","keterangan":"Ibadah Umum"}]',
+    ]);
+}
+add_action('customize_register', 'gereja_customizer_jadwal');
