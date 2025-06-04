@@ -4,7 +4,6 @@
 <section class="container py-5">
     <h1 class="mb-4 text-center">Berita Gereja Terkini</h1>
     <!-- Filter dan Pencarian -->
-    <!-- Filter dan Pencarian -->
     <div class="row mb-4">
         <div class="col-md-6 mb-3 mb-md-0">
             <form method="get" action="<?php echo home_url('/'); ?>">
