@@ -18,14 +18,14 @@ $jadwal = json_decode($jadwal_json, true);
     </section>
 <?php endif; ?>
 <section class="container py-5">
-    <div class="table-responsive shadow rounded-3 overflow-hidden">
-        <table class="table table-bordered table-hover text-center align-middle mb-0">
+    <div class="table-responsive shadow-sm rounded-3 overflow-hidden">
+        <table class="table table-striped table-bordered align-middle text-center mb-0">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">Hari</th>
-                    <th scope="col">Waktu</th>
-                    <th scope="col">Tempat</th>
-                    <th scope="col">Keterangan</th>
+                    <th scope="col" class="text-uppercase small">Hari</th>
+                    <th scope="col" class="text-uppercase small">Waktu</th>
+                    <th scope="col" class="text-uppercase small">Tempat</th>
+                    <th scope="col" class="text-uppercase small">Keterangan</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +40,7 @@ $jadwal = json_decode($jadwal_json, true);
                     <?php endforeach;
                 else : ?>
                     <tr>
-                        <td colspan="4">Belum ada jadwal ibadah ditambahkan.</td>
+                        <td colspan="4">Belum ada jadwal ditambahkan.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
